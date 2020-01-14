@@ -12,6 +12,10 @@ public class Book {
         this.shortDescription = shortDescription;
     }
 
-    
-
+    @Override
+    public String toString() {
+        return "\n" + "Title: " + title + "\n" +
+                "Author: " + author + "\n" +
+                "Description: " + shortDescription + "\n";
+    }
 }
