@@ -4,7 +4,9 @@ public class Program {
 
 
     public Program() {
-        System.out.println("Reached Program class");
+
+        BookHandler bookHandler = new BookHandler();
+
     }
 
 
