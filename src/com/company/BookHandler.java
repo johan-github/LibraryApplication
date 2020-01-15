@@ -8,7 +8,6 @@ public class BookHandler {
 
     public BookHandler(){
         createNewBook();
-        showAllBooks();
     }
 
 
@@ -32,12 +31,31 @@ public class BookHandler {
                 "Fordo and Sam continue their way towards Mordor, but get in the middle of the great war."));
         listOfAllBooks.add(new Book("Lord of the Rings: The Return of the King", "J.R.R. Tolkien",
                 "As Smeagol leads the way, Frodo, Sam and the others stands before their greatest challenge yet."));
-
     }
 
     public void showAllBooks(){
         for (Book book : listOfAllBooks){
             System.out.println(book);
+        }
+    }
+
+
+    public void showBookTitle(){
+        for (Book book : listOfAllBooks){
+            System.out.println(book.getTitle());
+        }
+    }
+
+    // Show only description of a certain book
+    public void showBookAuthor(){
+    for (Book book : listOfAllBooks){
+        System.out.println(book.getAuthor());
+        }
+    }
+
+    public void showBookDescription(){
+        for (Book book : listOfAllBooks){
+            System.out.println(book.getShortDescription());
         }
     }
 
