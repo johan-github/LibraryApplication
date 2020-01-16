@@ -1,18 +1,23 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class BookHandler {
 
     ArrayList<Book> listOfAllBooks = new ArrayList<>();
 
-    public BookHandler(){
+    //Scanner scanner = new Scanner(System.in);
+
+    public BookHandler() {
         createNewBook();
+
+        System.out.println(showAuthorCertainBook("Karin")); //of the ring
     }
 
 
     // Create new object in form of a book, add it to "listOfAllBooks"
-    public void createNewBook(){
+    public void createNewBook() {
 
         // ---------------------------------- Harry Potter Trilogy ------------------------------------
         listOfAllBooks.add(new Book("Harry Potter and the Philosopher's Stone", "J.K Rowling",
@@ -32,6 +37,12 @@ public class BookHandler {
         listOfAllBooks.add(new Book("Lord of the Rings: The Return of the King", "J.R.R. Tolkien",
                 "As Smeagol leads the way, Frodo, Sam and the others stands before their greatest challenge yet."));
     }
+
+    // public void loopAllBooks() {
+    //    for (Book book : listOfAllBooks);
+    //}
+
+
 
     public void showAllBooks(){
         for (Book book : listOfAllBooks){
@@ -59,4 +70,18 @@ public class BookHandler {
         }
     }
 
+
+    // Show author of a certain book, searched by title
+    public String showAuthorCertainBook(String bookTitle) {
+        for (int i=0; i < listOfAllBooks.size(); i++) {
+            if (listOfAllBooks.get(i).getTitle().contains(bookTitle)) {
+                System.out.println("You searched: " + bookTitle);
+                System.out.println("Book found: " + listOfAllBooks.get(i).getTitle());
+                System.out.println("The author you're looking for is: " + listOfAllBooks.get(i).getAuthor());
+                return "";
+            }
+        }
+        System.out.println("We're sorry, your search gave no results.");
+        return "";
+        }
 }
