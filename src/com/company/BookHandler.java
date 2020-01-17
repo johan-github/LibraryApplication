@@ -9,8 +9,8 @@ public class BookHandler {
     public BookHandler() {
         createNewBook();
         //System.out.println(showTitleDescription("fellow"));
-        //showTitleDescription("pOTt");
-        showAuthorCertainBook("cHa");
+        //showTitleDescription("aZ");
+        //showAuthorCertainBook("cHa");
     }
 
 
@@ -81,23 +81,24 @@ public class BookHandler {
         if(!findMatch) { // if not true
             System.out.println("We're sorry, your search gave no results.");
         }
-
     }
-
 
 
         // Show Title of book and the Description while SEARCHING either of them.
     public void showTitleDescription(String bookTitlebookDescription){
-
+        boolean findMatch = false;
         for (Book book : listOfAllBooks){
             if (book.getTitle().toLowerCase().contains(bookTitlebookDescription.toLowerCase()) ||
-                book.getAuthor().contains(bookTitlebookDescription))
-                    {
+                book.getAuthor().contains(bookTitlebookDescription)) {
+                    findMatch = true;
                     System.out.println("You searched: " + bookTitlebookDescription);
                     System.out.println("Book found: " + book.getTitle());
                     System.out.println("Author: " + book.getAuthor());
 
                 }
             }
+        if(!findMatch) { // if not true
+            System.out.println("We're sorry, your search gave no results.");
+        }
     }
 }
