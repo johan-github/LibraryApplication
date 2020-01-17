@@ -15,7 +15,7 @@ public class Book {
         this.availability = availability;
     }
 
-    // Let user see requested attribute by these getters.
+    // Make attributes usable through these getters.
     public String getTitle() {
         return title;
     }

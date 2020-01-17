@@ -1,18 +1,15 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class BookHandler {
 
     ArrayList<Book> listOfAllBooks = new ArrayList<>();
 
-    //Scanner scanner = new Scanner(System.in);
-
     public BookHandler() {
         createNewBook();
         //System.out.println(showTitleDescription("fellow"));
-        showTitleDescription("Tolk");
+        showTitleDescription("pOTt");
         //System.out.println(showAuthorCertainBook("Karin"));
     }
 
@@ -85,28 +82,19 @@ public class BookHandler {
 
 
         // Show Title of book and the Description while SEARCHING either of them.
-    public String showTitleDescription(String bookTitlebookDescription){
-        /* for (int i = 0 ; i < listOfAllBooks.size(); i++) {
-                if
-                    (listOfAllBooks.get(i).getTitle().contains(bookTitlebookDescription) ||
-                    (listOfAllBooks.get(i).getTitle().equalsIgnoreCase(bookTitlebookDescription) ||
-
-                    (listOfAllBooks.get(i).getAuthor().contains(bookTitlebookDescription) ||
-                    (listOfAllBooks.get(i).getAuthor().equalsIgnoreCase(bookTitlebookDescription))))) {
-*/
+    public void showTitleDescription(String bookTitlebookDescription){
+ 
         for (Book book : listOfAllBooks){
-            if (book.getTitle().contains(bookTitlebookDescription) ||
-                book.getTitle().equalsIgnoreCase(bookTitlebookDescription) ||
-                book.getAuthor().contains(bookTitlebookDescription) ||
-                book.getAuthor().equalsIgnoreCase(bookTitlebookDescription))
+            if (book.getTitle().toLowerCase().contains(bookTitlebookDescription.toLowerCase()) ||
+                book.getAuthor().contains(bookTitlebookDescription))
                     {
                     System.out.println("You searched: " + bookTitlebookDescription);
                     System.out.println("Book found: " + book.getTitle());
                     System.out.println("Author: " + book.getAuthor());
-                    return bookTitlebookDescription;
+                   // return bookTitlebookDescription;
                 }
-                    return null;
+                  //  return null;
             }
-        return "Your search gave no results. Please try again.";
+       // return "Your search gave no results. Please try again.";
     }
 }
