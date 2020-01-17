@@ -5,12 +5,14 @@ public class Book {
     private String title;
     private String author;
     private String shortDescription;
+    private boolean availability = false;
 
     //Constructor
-    public Book (String title, String author, String shortDescription) {
+    public Book (String title, String author, String shortDescription, boolean availability) {
         this.title = title;
         this.author = author;
         this.shortDescription = shortDescription;
+        this.availability = availability;
     }
 
     // Let user see requested attribute by these getters.
