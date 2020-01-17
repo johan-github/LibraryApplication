@@ -9,8 +9,8 @@ public class BookHandler {
     public BookHandler() {
         createNewBook();
         //System.out.println(showTitleDescription("fellow"));
-        showTitleDescription("pOTt");
-        //System.out.println(showAuthorCertainBook("Karin"));
+        //showTitleDescription("pOTt");
+        showAuthorCertainBook("cHa");
     }
 
 
@@ -18,12 +18,12 @@ public class BookHandler {
     public void createNewBook() {
 
         // ---------------------------------- Harry Potter Trilogy ------------------------------------
-        listOfAllBooks.add(new Book("Harry Potter and the Philosopher's Stone", "J.K Rowling",
-                "Harry Potter, a young boy realizes he is not an ordinary boy, but a wizard.", true));
-        listOfAllBooks.add(new Book("Harry Potter and the Chamber of Secrets", "J.K Rowling",
+        listOfAllBooks.add(new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowling",
+                "Harry Potter, a young boy realizes he is not an ordinary child, but a wizard.", true));
+        listOfAllBooks.add(new Book("Harry Potter and the Chamber of Secrets", "J.K. Rowling",
                 "Harry Potter continues his adventures in Hogwarts, but another enemy lurks in the"
                         + " " + "chamber underneath the school.", true));
-        listOfAllBooks.add(new Book("Harry Potter and the Prisoner of Azkaban", "J.K Rowling",
+        listOfAllBooks.add(new Book("Harry Potter and the Prisoner of Azkaban", "J.K. Rowling",
                 "Harry Potter encounters his worst enemy so far, what or who is this mysterious creature.", true));
 
         // ---------------------------------- Lord of the Rings Trilogy --------------------------------
@@ -45,12 +45,12 @@ public class BookHandler {
     }
 
 
-
     public void showBookTitle(){
         for (Book book : listOfAllBooks){
             System.out.println(book.getTitle());
         }
     }
+
 
     // Show only description of a certain book
     public void showBookAuthor(){
@@ -58,6 +58,7 @@ public class BookHandler {
         System.out.println(book.getAuthor());
         }
     }
+
 
     public void showBookDescription(){ // This might be replaced with method "showTitleDescription"
         for (Book book : listOfAllBooks){
@@ -67,23 +68,27 @@ public class BookHandler {
 
 
     // Show author of a certain book, searched by title
-    public String showAuthorCertainBook(String bookTitle) {
-        for (int i=0; i < listOfAllBooks.size(); i++) {
-            if (listOfAllBooks.get(i).getTitle().contains(bookTitle)) {
+    public void showAuthorCertainBook(String bookTitle) {
+        boolean findMatch = false;
+        for (Book book : listOfAllBooks){
+            if (book.getTitle().toLowerCase().contains(bookTitle.toLowerCase())) {
+                findMatch = true;
                 System.out.println("You searched: " + bookTitle);
-                System.out.println("Book found: " + listOfAllBooks.get(i).getTitle());
-                System.out.println("The author you're looking for is: " + listOfAllBooks.get(i).getAuthor());
-                return "";
+                System.out.println("Book found: " + book.getTitle());
+                System.out.println("The author you're looking for is: " + book.getAuthor());
             }
         }
-        System.out.println("We're sorry, your search gave no results.");
-        return "";
+        if(!findMatch) { // if not true
+            System.out.println("We're sorry, your search gave no results.");
         }
+
+    }
+
 
 
         // Show Title of book and the Description while SEARCHING either of them.
     public void showTitleDescription(String bookTitlebookDescription){
- 
+
         for (Book book : listOfAllBooks){
             if (book.getTitle().toLowerCase().contains(bookTitlebookDescription.toLowerCase()) ||
                 book.getAuthor().contains(bookTitlebookDescription))
@@ -91,10 +96,8 @@ public class BookHandler {
                     System.out.println("You searched: " + bookTitlebookDescription);
                     System.out.println("Book found: " + book.getTitle());
                     System.out.println("Author: " + book.getAuthor());
-                   // return bookTitlebookDescription;
+
                 }
-                  //  return null;
             }
-       // return "Your search gave no results. Please try again.";
     }
 }
