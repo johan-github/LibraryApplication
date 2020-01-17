@@ -12,8 +12,9 @@ public class Program {
         // System.out.println();
         // bookHandler.showBookDescription();
         // System.out.println();
-        // bookHandler.showAllBooks(); */
+        // bookHandler.showAllBooksWithContent();
         //bookHandler.showAuthorCertainBook("Lord of the Rings: Fellowship of the Ring");
+        // bookHandler.showTitleDescription("");
 
     }
 
