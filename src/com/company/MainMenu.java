@@ -6,6 +6,7 @@ public class MainMenu {
 
     private SubMenu subMenu;
     private UserManager userManager;
+    Scanner inputFromUser = new Scanner(System.in);
 
     public MainMenu(){
         userManager = new UserManager();
@@ -13,18 +14,19 @@ public class MainMenu {
     }
 
     private void nextMenu (){
-        subMenu = new SubMenu(userManager);
+        subMenu = new SubMenu();
     }
 
     private void checkIfUserExist(){
-        if(userManager.findUser(inputFromUser)){
-            userManager.setActiveUser();
-            System.out.println("Welcome " + inputFromUser + "!");
+        String userInput = inputFromUser.nextLine();
+        User user = userManager.findUser(userInput);
+        if (user != null){
+            userManager.setActiveUser(user);
+            System.out.println("Welcome User: " + user.getUserName() + "!");
             nextMenu();
         } else {
-            System.out.println("User not find, please try again or register as new user.");
+            System.out.println("User not recognized, please enter a valid username or register at start menu.");
         }
-
     }
 
     public void Choices() {
