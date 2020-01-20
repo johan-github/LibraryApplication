@@ -10,11 +10,6 @@ public class BookManager {
 
     public BookManager() {
 
-        //listOfAllBooks = new ArrayList<>();
-        //createNewBook();
-        //System.out.println(showTitleDescription("fellow"));
-        //showTitleDescription("aZ");
-        //showAuthorCertainBook("cHa");
     }
 
 
