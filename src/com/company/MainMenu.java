@@ -10,6 +10,8 @@ public class MainMenu {
 
     public MainMenu(){
         userManager = new UserManager();
+        userManager.loadUsers();
+
         Choices();
     }
 
@@ -48,7 +50,6 @@ public class MainMenu {
             switch (userInput) {
                 case "1":
                     System.out.println("Please enter your username");
-                    //String inputFromUser = input.nextLine();
                     checkIfUserExist();
 
                     break;
@@ -56,6 +57,8 @@ public class MainMenu {
                 case "2":
                     System.out.println("Please enter your New username");
                     String newUserName = input.nextLine();
+                    userManager.createNewCustomer(newUserName);
+                    System.out.println("Welcome " + newUserName + "!");
                     break;
 
                 case "0":

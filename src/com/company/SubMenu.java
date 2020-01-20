@@ -8,6 +8,8 @@ private BookManager bookManager;
 
     public SubMenu(){
         this.bookManager = new BookManager();
+        bookManager.loadBooks();
+
         Decisions();
     }
 
