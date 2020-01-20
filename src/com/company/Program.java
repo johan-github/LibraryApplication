@@ -5,7 +5,7 @@ public class Program {
 
     public Program() {
 
-        BookHandler bookHandler = new BookHandler();
+        BookManager bookManager = new BookManager();
         // bookHandler.showBookAuthor();
         // System.out.println();
         // bookHandler.showBookTitle();

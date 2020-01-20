@@ -2,11 +2,13 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class BookHandler {
+public class BookManager {
 
-    ArrayList<Book> listOfAllBooks = new ArrayList<>();
+    ArrayList<Book> listOfAllBooks;
 
-    public BookHandler() {
+    public BookManager() {
+
+        listOfAllBooks = new ArrayList<>();
         //createNewBook();
         //System.out.println(showTitleDescription("fellow"));
         //showTitleDescription("aZ");
