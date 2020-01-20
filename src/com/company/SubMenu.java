@@ -1,6 +1,6 @@
 package com.company;
 
-public class AdminMenu {
+public class SubMenu {
 
 
 
