@@ -48,7 +48,7 @@ public class MainMenu {
             switch (userInput) {
                 case "1":
                     System.out.println("Please enter your username");
-                    String inputFromUser = input.nextLine();
+                    //String inputFromUser = input.nextLine();
                     checkIfUserExist();
 
                     break;
