@@ -42,8 +42,7 @@ boolean programIsRunning = true;
                 case "2":
                     System.out.println("Please enter your New username");
                     String newUserName = input.nextLine();
-                    System.out.println("Please enter your New password");
-                    String newPassword = input.nextLine();
+                    
                     break;
 
                 case "0":

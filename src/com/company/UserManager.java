@@ -1,6 +1,6 @@
 package com.company;
 
-public class Admin {
+public class UserManager {
 
 
 
