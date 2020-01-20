@@ -1,6 +1,10 @@
 package com.company;
 
+import java.nio.file.*;
+
 import java.util.ArrayList;
+
+import static java.nio.file.Paths.*;
 
 public class BookManager {
 
@@ -69,6 +73,14 @@ public class BookManager {
     }
 
 
+    public void showAvailableBooks(){
+        for (Book book : listOfAllBooks){
+            if (book.isAvailable())
+            System.out.println(book.getTitle());
+        }
+    }
+
+
     // Show author of a certain book, searched by title
     public void showAuthorCertainBook(String bookTitle) {
         boolean findMatch = false;
@@ -101,6 +113,22 @@ public class BookManager {
             }
         if(!findMatch) { // if not true
             System.out.println("We're sorry, your search gave no results.");
+        }
+    }
+
+    public void saveBooks(){
+        FileUtils.saveObject("books.src", listOfAllBooks, StandardOpenOption.CREATE);
+    }
+    public void loadBooks(){
+
+        Path path = Paths.get("books.src");
+        if(Files.exists(path)) {
+            listOfAllBooks = (ArrayList<Book>)FileUtils.loadObject("books.src");
+        }
+        else{
+            listOfAllBooks = new ArrayList<>();
+            createNewBook();
+            saveBooks();
         }
     }
 }

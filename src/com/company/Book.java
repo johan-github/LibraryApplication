@@ -1,18 +1,20 @@
 package com.company;
 
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable {
 
     private String title;
     private String author;
     private String shortDescription;
-    private boolean availability = false;
+    private boolean available = false;
 
     //Constructor
-    public Book (String title, String author, String shortDescription, boolean availability) {
+    public Book (String title, String author, String shortDescription, boolean available) {
         this.title = title;
         this.author = author;
         this.shortDescription = shortDescription;
-        this.availability = availability;
+        this.available = available;
     }
 
     // Make attributes usable through these getters.
@@ -25,7 +27,9 @@ public class Book {
     public String getShortDescription() {
         return shortDescription;
     }
-
+    public boolean isAvailable() {
+        return available;
+    }
 
     // toString
     @Override
