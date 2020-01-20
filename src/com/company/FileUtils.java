@@ -2,7 +2,10 @@ package com.company;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.nio.file.*; // Get all content within file. (...file.*)
+/**
+ * Get all content within file. (...file.*)
+ */
+import java.nio.file.*;
 
 public class FileUtils {
 

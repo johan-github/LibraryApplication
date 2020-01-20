@@ -40,7 +40,7 @@ public class BookManager {
 
 
 
-    public void showAllBooksWithContent(){
+    public void showAllBooksWithAllContent(){
         for (Book book : listOfAllBooks){
             System.out.println(book);
         }
