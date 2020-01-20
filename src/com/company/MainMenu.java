@@ -4,23 +4,34 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-// This menu will be visible for everyone.
+    private SubMenu subMenu;
+    private UserManager userManager;
 
+    public MainMenu(){
+        userManager = new UserManager();
+        Choices();
+    }
 
-public MainMenu(){
+    private void nextMenu (){
+        subMenu = new SubMenu(userManager);
+    }
 
-    Choices();
+    private void checkIfUserExist(){
+        if(userManager.findUser(inputFromUser)){
+            userManager.setActiveUser();
+            System.out.println("Welcome " + inputFromUser + "!");
+            nextMenu();
+        } else {
+            System.out.println("User not find, please try again or register as new user.");
+        }
 
-}
-
-boolean programIsRunning = true;
+    }
 
     public void Choices() {
 
+        while (true) {
 
-        while (programIsRunning) {
-
-            System.out.println();
+            System.out.println("----------------------------------------------------------");
             System.out.println("Welcome to the library " + "'Readers Inn'!");
             System.out.println("Please select 1-3 below, proceed with <ENTER>");
             System.out.println();
@@ -36,13 +47,13 @@ boolean programIsRunning = true;
                 case "1":
                     System.out.println("Please enter your username");
                     String inputFromUser = input.nextLine();
+                    checkIfUserExist();
 
                     break;
 
                 case "2":
                     System.out.println("Please enter your New username");
                     String newUserName = input.nextLine();
-
                     break;
 
                 case "0":
