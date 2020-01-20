@@ -7,7 +7,7 @@ public class BookHandler {
     ArrayList<Book> listOfAllBooks = new ArrayList<>();
 
     public BookHandler() {
-        createNewBook();
+        //createNewBook();
         //System.out.println(showTitleDescription("fellow"));
         //showTitleDescription("aZ");
         //showAuthorCertainBook("cHa");
