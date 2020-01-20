@@ -5,10 +5,8 @@ import java.util.Scanner;
 public class SubMenu {
 
 private BookManager bookManager;
-private UserManager userManager;
 
-    public SubMenu(UserManager userManager){
-        this.userManager = userManager;
+    public SubMenu(){
         this.bookManager = new BookManager();
         Decisions();
     }
@@ -21,29 +19,44 @@ private UserManager userManager;
             System.out.println("----------------------------------------------------------");
             System.out.println("Please select number below, proceed with <ENTER>");
             System.out.println();
-            System.out.println("[1] See ALL books (titles) within the Readers Inn");
-            System.out.println("[2] Search for a specific book by title");
-            System.out.println("[3] Search for a specific book by author");
-            System.out.println("[4] Search by title or author");
-            System.out.println("[5] See all available books (chose this for opportunity to loan a book)");
-            System.out.println("[6] See all books I borrow (chose this if you want to return a book)");
+            System.out.println("[1] See ALL books (titles) that the Readers Inn have (here you can also see individual description of all books");
+            System.out.println("[2] Search by title or author");
+            System.out.println("[3] See all books that are available (chose this if you also want to loan a book)");
+            System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
             System.out.println("[0] Log out and go back to Main menu");
 
             Scanner input = new Scanner(System.in);
             String userInput = input.nextLine();
+            String inputFromUser = input.nextLine();
 
             switch (userInput){
                 case "1":
                     System.out.println("Printing all books...");
                     bookManager.showBookTitle();
+                    System.out.println("Do you wish to see a description of one of the books?");
+                    System.out.println("If so, enter the ID of the book you wish to see.");
+
+                    bookManager.searchTitleOrAuthor(inputFromUser);
                     break;
+
+                case "2":
+                    bookManager.searchTitleOrAuthor(inputFromUser);
+                    break;
+
+                case "3":
+                    bookManager.showAvailableBooks();
+                    // Here the user can chose if she/he want to loan a book.
+                    break;
+
+                case "4":
+
+
                 case "0":
                     subMenuRunning = false;
                     break;
+
             }
-
-
-        } // end while
+        }
 
     }
 

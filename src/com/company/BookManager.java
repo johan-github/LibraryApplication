@@ -4,15 +4,13 @@ import java.nio.file.*;
 
 import java.util.ArrayList;
 
-import static java.nio.file.Paths.*;
-
 public class BookManager {
 
     ArrayList<Book> listOfAllBooks;
 
     public BookManager() {
 
-        listOfAllBooks = new ArrayList<>();
+        //listOfAllBooks = new ArrayList<>();
         //createNewBook();
         //System.out.println(showTitleDescription("fellow"));
         //showTitleDescription("aZ");
@@ -58,7 +56,7 @@ public class BookManager {
     }
 
 
-    // Show only description of a certain book
+    // Show only Author of a certain book
     public void showBookAuthor(){
     for (Book book : listOfAllBooks){
         System.out.println(book.getAuthor());
@@ -66,10 +64,10 @@ public class BookManager {
     }
 
 
-    public void showBookDescription(){ // This might be replaced with method "showTitleDescription"
-        for (Book book : listOfAllBooks){
-            System.out.println(book.getShortDescription());
-        }
+    public void showBookDescription(int bookIndex){ // This might be replaced with method "showTitleDescription"
+
+            System.out.println(listOfAllBooks.get(bookIndex).toString());
+
     }
 
 
@@ -99,13 +97,13 @@ public class BookManager {
 
 
         // Show Title of book and the Description while SEARCHING either of them.
-    public void showTitleDescription(String bookTitlebookDescription){
+    public void searchTitleOrAuthor(String bookTitlebookAuthor){
         boolean findMatch = false;
         for (Book book : listOfAllBooks){
-            if (book.getTitle().toLowerCase().contains(bookTitlebookDescription.toLowerCase()) ||
-                book.getAuthor().contains(bookTitlebookDescription)) {
+            if (book.getTitle().toLowerCase().contains(bookTitlebookAuthor.toLowerCase()) ||
+                book.getAuthor().contains(bookTitlebookAuthor)) {
                     findMatch = true;
-                    System.out.println("You searched: " + bookTitlebookDescription);
+                    System.out.println("You searched: " + bookTitlebookAuthor);
                     System.out.println("Book found: " + book.getTitle());
                     System.out.println("Author: " + book.getAuthor());
 
@@ -117,15 +115,16 @@ public class BookManager {
     }
 
     public void saveBooks(){
-        FileUtils.saveObject("books.src", listOfAllBooks, StandardOpenOption.CREATE);
+        FileUtils.saveObject("books.ser", listOfAllBooks, StandardOpenOption.CREATE);
     }
     public void loadBooks(){
 
-        Path path = Paths.get("books.src");
-        if(Files.exists(path)) {
-            listOfAllBooks = (ArrayList<Book>)FileUtils.loadObject("books.src");
+        Path path = Paths.get("books.ser");
+
+        if (Files.exists(path)) {
+            listOfAllBooks = (ArrayList<Book>)FileUtils.loadObject("books.ser");
         }
-        else{
+        else {
             listOfAllBooks = new ArrayList<>();
             createNewBook();
             saveBooks();
