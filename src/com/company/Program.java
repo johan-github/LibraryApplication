@@ -16,6 +16,9 @@ public class Program {
         //bookHandler.showAuthorCertainBook("Lord of the Rings: Fellowship of the Ring");
         // bookHandler.showTitleDescription("");
 
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.Choices();
+
     }
 
 
