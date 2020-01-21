@@ -4,44 +4,50 @@ import java.util.Scanner;
 
 public class SubMenu {
 
+
 private BookManager bookManager;
+
 
     public SubMenu(){
         this.bookManager = new BookManager();
         bookManager.loadBooks();
-
         Decisions();
     }
 
 
     public void Decisions(){
+
     boolean subMenuRunning = true;
+
         while (subMenuRunning){
 
             System.out.println("----------------------------------------------------------");
-            System.out.println("Please select number below, proceed with <ENTER>");
-            System.out.println();
-            System.out.println("[1] See ALL books (titles) that the Readers Inn have (here you can also see individual description of all books");
+            System.out.println("Please select number below, proceed with <ENTER>\n");
+            System.out.println("[1] See ALL books (titles) that the Readers Inn have" +
+                    " (here you can also see individual description of all books");
             System.out.println("[2] Search by title or author");
             System.out.println("[3] See all books that are available (chose this if you also want to loan a book)");
             System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
             System.out.println("[0] Log out and go back to Main menu");
 
             Scanner input = new Scanner(System.in);
-            String userInput = input.nextLine();
+            String userInput = input.next(); // Removed "Line"
             String inputFromUser = input.nextLine();
 
             switch (userInput){
                 case "1":
-                    System.out.println("Printing all books...");
-                    bookManager.showBookTitle();
-                    System.out.println("Do you wish to see a description of one of the books?");
-                    System.out.println("If so, enter the ID of the book you wish to see.");
+                    System.out.println("All books within Readers Inn:");
+                    bookManager.showTitleWithIndex();
+                    System.out.println("\nDo you wish to see a description of one of the books?\n" +
+                    "If so, enter the ID of the book you wish to see (number next to the titles).\n" +
+                    "If not, press 0 to return to previous menu.");
+                    bookManager.returnBook();
 
-                    bookManager.searchTitleOrAuthor(inputFromUser);
                     break;
 
                 case "2":
+                    System.out.println("What author or title are you looking for?");
+                    inputFromUser = input.next();
                     bookManager.searchTitleOrAuthor(inputFromUser);
                     break;
 
@@ -54,6 +60,7 @@ private BookManager bookManager;
 
 
                 case "0":
+                    System.out.println("Logging off, please wait...");
                     subMenuRunning = false;
                     break;
 
