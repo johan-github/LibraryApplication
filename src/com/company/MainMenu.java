@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MainMenu {
 
-    private SubMenu subMenu;
     private UserManager userManager;
     Scanner inputFromUser = new Scanner(System.in);
 
@@ -15,8 +14,8 @@ public class MainMenu {
         Choices();
     }
 
-    private void nextMenu (){
-        subMenu = new SubMenu();
+    public static void nextMenu (){
+        new SubMenu();
     }
 
     private void checkIfUserExist(){
@@ -24,19 +23,20 @@ public class MainMenu {
         User user = userManager.findUser(userInput);
         if (user != null){
             userManager.setActiveUser(user);
-            System.out.println("Welcome User: " + user.getUserName() + "!");
+            System.out.println("Welcome " + user.getUserName() + "!");
             nextMenu();
         } else {
-            System.out.println("User not recognized, please enter a valid username or register at start menu.");
+            System.out.println("User not recognized, please enter a valid username" +
+                    " or register as a new user at start menu.\nReturning to main menu...");
         }
     }
 
     public void Choices() {
-
+        System.out.println("\nWelcome to the Readers Inn!");
         while (true) {
 
             System.out.println("----------------------------------------------------------");
-            System.out.println("Welcome to the library " + "'Readers Inn'!");
+
             System.out.println("Please select 1-3 below, proceed with <ENTER>");
             System.out.println();
             System.out.println("[1] Log in");
@@ -45,20 +45,21 @@ public class MainMenu {
 
 
             Scanner input = new Scanner(System.in);
-            String userInput = input.nextLine();
+            String userInput = input.next();
 
             switch (userInput) {
                 case "1":
                     System.out.println("Please enter your username");
                     checkIfUserExist();
-
                     break;
 
                 case "2":
-                    System.out.println("Please enter your New username");
-                    String newUserName = input.nextLine();
+                    System.out.println("Please enter your New username, NO spaces");
+                    String newUserName = input.next();
                     userManager.createNewCustomer(newUserName);
                     System.out.println("Welcome " + newUserName + "!");
+                    System.out.println("Please use your new username to log in.");
+                    Choices();
                     break;
 
                 case "0":

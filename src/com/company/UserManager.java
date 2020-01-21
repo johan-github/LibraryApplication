@@ -33,11 +33,12 @@ public class UserManager {
         for (User user : listOfAllUsers) {
             if (inputFromUser.equals(user.getUserName())) {
                 return user;
+            } else {
+                return null;
             }
         }
         return null;
     }
-
 
     public void setActiveUser(User user) {
         activeUser = user;
