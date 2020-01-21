@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class SubMenu {
 
-
 private BookManager bookManager;
-
 
     public SubMenu(){
         this.bookManager = new BookManager();
@@ -26,7 +24,7 @@ private BookManager bookManager;
             System.out.println("[1] See ALL books (titles) that the Readers Inn have" +
                     " (here you can also see individual description of all books");
             System.out.println("[2] Search by title or author");
-            System.out.println("[3] See all books that are available (chose this if you also want to loan a book)");
+            System.out.println("[3] See all books that are available to borrow (chose this if you also want to loan a book)");
             System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
             System.out.println("[0] Log out and go back to Main menu");
 
@@ -41,7 +39,7 @@ private BookManager bookManager;
                     System.out.println("\nDo you wish to see a description of one of the books?\n" +
                     "If so, enter the ID of the book you wish to see (number next to the titles).\n" +
                     "If not, press 0 to return to previous menu.");
-                    bookManager.returnBook();
+                    bookManager.bookChoiceDescription();
 
                     break;
 
@@ -57,7 +55,9 @@ private BookManager bookManager;
                     break;
 
                 case "4":
+                    // Show books user have, also gives opportunity to return one book.
 
+                    break;
 
                 case "0":
                     System.out.println("Logging off, please wait...");

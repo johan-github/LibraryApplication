@@ -10,8 +10,7 @@ import static java.lang.Integer.parseInt;
 
 public class BookManager {
 
-    ArrayList<Book> listOfAllBooks;
-    //ArrayList<Book> listOfAllBooks = new ArrayList<>();
+    ArrayList<Book> listOfAllBooks = new ArrayList<>();
 
     public BookManager() {
 
@@ -63,10 +62,12 @@ public class BookManager {
     }
 
 
-    public void showBookDescription(int bookIndex) { // This might be replaced with method "showTitleDescription"
-
-        System.out.println(listOfAllBooks.get(bookIndex).toString());
-
+    public void showNotAvailableBooks(){
+        for (Book book : listOfAllBooks){
+            if (!book.isAvailable()){
+                System.out.println();
+            }
+        }
     }
 
 
@@ -125,7 +126,7 @@ public class BookManager {
     }
 
 
-    public void returnBook() {
+    public void bookChoiceDescription() {
         System.out.println();
         System.out.println("Choose book by entering the number next to the title");
         Scanner scanner = new Scanner(System.in);
@@ -149,6 +150,7 @@ public class BookManager {
             while ((Integer.parseInt(userInput) - 1) >= 0 || (Integer.parseInt(userInput) - 1) <= listOfAllBooks.size() && Integer.parseInt(userInput) <= listOfAllBooks.size()) {
 
                 System.out.println(listOfAllBooks.get(Integer.parseInt(userInput) - 1));
+                System.out.println(listOfAllBooks.get(Integer.parseInt(userInput) - 1).isAvailable());
                 System.out.println("Returning to menu...");
                 return;
             }
