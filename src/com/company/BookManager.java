@@ -96,7 +96,7 @@ public class BookManager {
     }
 
 
-    // Show Title of book and the Description while SEARCHING either of them.
+    // Show Title of book and the Description while SEARCHING either by Author or Title.
     public void searchTitleOrAuthor(String bookTitlebookAuthor) {
         boolean findMatch = false;
         if (bookTitlebookAuthor.equals("0")) {
@@ -110,11 +110,12 @@ public class BookManager {
                 System.out.println("You searched: " + bookTitlebookAuthor);
                 System.out.println("Book found: " + book.getTitle());
                 System.out.println("Author: " + book.getAuthor());
-
+                System.out.println("Returning to menu");
             }
         }
         if (!findMatch) { // if not true
             System.out.println("We're sorry, your search gave no results.");
+            System.out.println("Returning to menu");
         }
     }
 

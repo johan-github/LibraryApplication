@@ -29,6 +29,9 @@ public class User implements Serializable {
         return borrowedBooks;
     }
 
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public void addBookToUser(Book book){
         borrowedBooks.add(book);
