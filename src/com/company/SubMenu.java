@@ -5,10 +5,13 @@ import java.util.Scanner;
 public class SubMenu {
 
 private BookManager bookManager;
+private UserManager userManager;
 
     public SubMenu(){
         this.bookManager = new BookManager();
         bookManager.loadBooks();
+        this.userManager = new UserManager();
+
         Decisions();
     }
 
@@ -26,11 +29,12 @@ private BookManager bookManager;
             System.out.println("[2] Search by title or author");
             System.out.println("[3] See all books that are available to borrow (chose this if you also want to loan a book)");
             System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
+            System.out.println("[5] Remove user from application (ONLY ADMIN CAN USE THIS");
             System.out.println("[0] Log out and go back to Main menu");
 
             Scanner input = new Scanner(System.in);
-            String userInput = input.next(); // Removed "Line"
-            String inputFromUser = input.nextLine();
+            String userInput = input.next();
+            //String inputFromUser = input.next();
 
             switch (userInput){
                 case "1":
@@ -40,13 +44,12 @@ private BookManager bookManager;
                     "If so, enter the ID of the book you wish to see (number next to the titles).\n" +
                     "If not, press 0 to return to previous menu.");
                     bookManager.bookChoiceDescription();
-
                     break;
 
                 case "2":
                     System.out.println("What author or title are you looking for?");
-                    inputFromUser = input.next();
-                    bookManager.searchTitleOrAuthor(inputFromUser);
+                    String c2 = input.next();
+                    bookManager.searchTitleOrAuthor(c2);
                     break;
 
                 case "3":
@@ -56,7 +59,11 @@ private BookManager bookManager;
 
                 case "4":
                     // Show books user have, also gives opportunity to return one book.
+                    break;
 
+                case "5":
+                    String c5 = input.next();
+                    userManager.removeCustomerFromList(c5);
                     break;
 
                 case "0":

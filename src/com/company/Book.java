@@ -28,7 +28,7 @@ public class Book implements Serializable {
         return shortDescription;
     }
     public boolean isAvailable() {
-        return available = true;
+        return available;
     }
     public boolean NotAvailable(){
         return available = false;
