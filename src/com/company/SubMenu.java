@@ -6,6 +6,7 @@ public class SubMenu {
 
 private BookManager bookManager;
 private UserManager userManager;
+private User userClass;
 
     public SubMenu(){
         this.bookManager = new BookManager();
@@ -14,7 +15,6 @@ private UserManager userManager;
 
         Decisions();
     }
-
 
     public void Decisions(){
 
@@ -63,15 +63,27 @@ private UserManager userManager;
                     break;
 
                 case "5":
-                    // See all users, admin only
-                    userManager.showAllUsers();
+                    // See all users, ADMIN only
+                    if (UserManager.activeUser.getUserRestriction().equals("customer")) {
+                        System.out.println("Sorry, you don't have authority to use this, \n" +
+                                "please make another choice.\n Returning to menu...");
+                    }
+                    else {
+                        userManager.showAllUsers();
+                    }
                     break;
 
                 case "6":
-                    // Remove user, admin only
-                    System.out.println("Type in the full name of the user that you want to remove:");
-                    String c6 = input.next();
-                    userManager.removeCustomerFromList(c6);
+                    // Remove user, ADMIN only
+                    if (UserManager.activeUser.getUserRestriction().equals("customer")) {
+                        System.out.println("Sorry, you don't have authority to use this, \n" +
+                                "please make another choice.\n Returning to menu...");
+                    }
+                    else {
+                        System.out.println("Type in the full name of the user that you want to remove:");
+                        String c6 = input.next();
+                        userManager.removeCustomerFromList(c6);
+                    }
                     break;
 
                 case "0":
