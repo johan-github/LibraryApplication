@@ -13,6 +13,12 @@ public class UserManager {
     }
 
 
+    public void loopUsers(){
+        for (User user : listOfAllUsers){
+        }
+    }
+
+
     public void createNewAdmin(){
         listOfAllUsers.add(new User("admin", "admin"));
     }
@@ -20,6 +26,26 @@ public class UserManager {
 
     public void createNewCustomer(String newUserName){
         listOfAllUsers.add(new User(newUserName, "Customer"));
+        saveUsers();
+        loopUsers();
+        System.out.println(listOfAllUsers);
+    }
+
+
+    public void removeCustomerFromList(String inputFromUser){
+        for (User user : listOfAllUsers){
+            if (user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
+                listOfAllUsers.remove(user);
+                System.out.println("Successfully removed user: " + user.getUserName() + " from the system.");
+                break;
+            }
+            if (!user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
+                System.out.println("Did not find user with that name, please enter a " +
+                        "valid username.\n" + "Returning to menu...");
+                break;
+            }
+        }
+
     }
 
 
@@ -29,7 +55,7 @@ public class UserManager {
      * @param inputFromUser input that user uses.
      */
     public User findUser(String inputFromUser) {
-        System.out.println(listOfAllUsers);
+        //System.out.println(listOfAllUsers); // Shows only objects, not strings.
         for (User user : listOfAllUsers) {
             if (inputFromUser.equals(user.getUserName())) {
                 return user;

@@ -10,7 +10,6 @@ public class MainMenu {
     public MainMenu(){
         userManager = new UserManager();
         userManager.loadUsers();
-
         Choices();
     }
 
@@ -19,6 +18,7 @@ public class MainMenu {
     }
 
     private void checkIfUserExist(){
+        userManager.loadUsers();
         String userInput = inputFromUser.nextLine();
         User user = userManager.findUser(userInput);
         if (user != null){
@@ -31,6 +31,7 @@ public class MainMenu {
         }
     }
 
+
     public void Choices() {
         System.out.println("\nWelcome to the Readers Inn!");
         while (true) {
@@ -41,7 +42,7 @@ public class MainMenu {
             System.out.println();
             System.out.println("[1] Log in");
             System.out.println("[2] Register as new user");
-            System.out.println("[0] Exit");
+            System.out.println("[0] Save and Quit");
 
 
             Scanner input = new Scanner(System.in);

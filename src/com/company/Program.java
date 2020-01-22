@@ -1,6 +1,8 @@
 package com.company;
 
-public class Program {
+import java.io.Serializable;
+
+public class Program implements Serializable {
 
     public Program() {
 

@@ -147,10 +147,10 @@ public class BookManager {
                 }
             }
             try{
-            while ((Integer.parseInt(userInput) - 1) >= 0 || (Integer.parseInt(userInput) - 1) <= listOfAllBooks.size() && Integer.parseInt(userInput) <= listOfAllBooks.size()) {
+            while ((Integer.parseInt(userInput) - 1) >= 0 || (Integer.parseInt(userInput) - 1) <= listOfAllBooks.size()
+                    && Integer.parseInt(userInput) <= listOfAllBooks.size()) {
 
                 System.out.println(listOfAllBooks.get(Integer.parseInt(userInput) - 1));
-                System.out.println(listOfAllBooks.get(Integer.parseInt(userInput) - 1).isAvailable());
                 System.out.println("Returning to menu...");
                 return;
             }
