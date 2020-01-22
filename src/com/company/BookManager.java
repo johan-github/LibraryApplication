@@ -4,10 +4,6 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static com.company.UserManager.activeUser;
-import static java.lang.Integer.getInteger;
-import static java.lang.Integer.parseInt;
-
 public class BookManager {
 
     ArrayList<Book> listOfAllBooks = new ArrayList<>();

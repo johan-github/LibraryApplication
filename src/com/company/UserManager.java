@@ -52,14 +52,12 @@ public class UserManager {
 
     /**
      * Check if username equals a name in the list of users
-     *
+     * When finished: Removed "else", it made loop end at first index
      * @param inputFromUser input that user uses.
      */
     public User findUser(String inputFromUser) {
         for (int i = 0; i < listOfAllUsers.size(); i++) {
-
             if (listOfAllUsers.get(i).getUserName().equals(inputFromUser)) {
-                System.out.println("Got to first if in findUser-method" + listOfAllUsers.get(i).getUserName());
                 return listOfAllUsers.get(i);
             }
         }
@@ -87,4 +85,10 @@ public class UserManager {
             saveUsers();
         }
     }
+
+   /* public ArrayList<User> getListOfAllUsers() {
+        return listOfAllUsers;
+    }
+
+    */
 }
