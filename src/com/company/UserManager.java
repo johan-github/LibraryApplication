@@ -13,22 +13,22 @@ public class UserManager {
     }
 
 
-    public void loopUsers(){
-        for (User user : listOfAllUsers){
-        }
-    }
-
-
     public void createNewAdmin(){
         listOfAllUsers.add(new User("admin", "admin"));
     }
 
 
     public void createNewCustomer(String newUserName){
-        listOfAllUsers.add(new User(newUserName, "Customer"));
+        listOfAllUsers.add(new User(newUserName, "customer"));
         saveUsers();
-        loopUsers();
-        System.out.println(listOfAllUsers);
+        System.out.println("Sucessfully added: " + newUserName + " to the program");
+    }
+
+    public void showAllUsers(){
+        loadUsers();
+        for (User user : listOfAllUsers){
+            System.out.println(user.getUserName());
+        }
     }
 
 
@@ -36,7 +36,8 @@ public class UserManager {
         for (User user : listOfAllUsers){
             if (user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
                 listOfAllUsers.remove(user);
-                System.out.println("Successfully removed user: " + user.getUserName() + " from the system.");
+                System.out.println("Successfully removed user: " + user.getUserName() + " from the system." +
+                        "\n" + "Returning to menu...");
                 break;
             }
             if (!user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
@@ -55,12 +56,11 @@ public class UserManager {
      * @param inputFromUser input that user uses.
      */
     public User findUser(String inputFromUser) {
-        //System.out.println(listOfAllUsers); // Shows only objects, not strings.
-        for (User user : listOfAllUsers) {
-            if (inputFromUser.equals(user.getUserName())) {
-                return user;
-            } else {
-                return null;
+        for (int i = 0; i < listOfAllUsers.size(); i++) {
+
+            if (listOfAllUsers.get(i).getUserName().equals(inputFromUser)) {
+                System.out.println("Got to first if in findUser-method" + listOfAllUsers.get(i).getUserName());
+                return listOfAllUsers.get(i);
             }
         }
         return null;

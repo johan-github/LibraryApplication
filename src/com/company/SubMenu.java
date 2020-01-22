@@ -29,8 +29,9 @@ private UserManager userManager;
             System.out.println("[2] Search by title or author");
             System.out.println("[3] See all books that are available to borrow (chose this if you also want to loan a book)");
             System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
-            System.out.println("[5] Remove user from application (ONLY ADMIN CAN USE THIS");
-            System.out.println("[0] Log out and go back to Main menu");
+            System.out.println("[5] ONLY FOR ADMIN --- See all users");
+            System.out.println("[6] ONLY FOR ADMIN --- Remove user from application");
+            System.out.println("[0] Save, log out and return to Main menu");
 
             Scanner input = new Scanner(System.in);
             String userInput = input.next();
@@ -62,14 +63,24 @@ private UserManager userManager;
                     break;
 
                 case "5":
-                    String c5 = input.next();
-                    userManager.removeCustomerFromList(c5);
+                    // See all users, admin only
+                    userManager.showAllUsers();
+                    break;
+
+                case "6":
+                    // Remove user, admin only
+                    System.out.println("Type in the full name of the user that you want to remove:");
+                    String c6 = input.next();
+                    userManager.removeCustomerFromList(c6);
                     break;
 
                 case "0":
+                    // Save, log out and return to Main menu
                     System.out.println("Logging off, please wait...");
+                    bookManager.saveBooks();
                     subMenuRunning = false;
                     break;
+                default:
 
             }
         }

@@ -10,6 +10,7 @@ public class MainMenu {
     public MainMenu(){
         userManager = new UserManager();
         userManager.loadUsers();
+
         Choices();
     }
 
@@ -19,7 +20,7 @@ public class MainMenu {
 
     private void checkIfUserExist(){
         userManager.loadUsers();
-        String userInput = inputFromUser.nextLine();
+        String userInput = inputFromUser.next();
         User user = userManager.findUser(userInput);
         if (user != null){
             userManager.setActiveUser(user);
