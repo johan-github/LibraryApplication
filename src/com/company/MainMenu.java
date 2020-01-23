@@ -24,7 +24,7 @@ public class MainMenu {
         User user = userManager.findUser(userInput);
         if (user != null){
             userManager.setActiveUser(user);
-            System.out.println("Welcome " + user.getUserName() + "!");
+            System.out.println("\nWelcome " + user.getUserName() + "!");
             nextMenu();
         } else {
             System.out.println("User not recognized, please enter a valid username" +

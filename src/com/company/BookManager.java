@@ -35,6 +35,37 @@ public class BookManager {
                 "As Smeagol leads the way, Frodo, Sam and the others stands before their greatest challenge yet.", true));
     }
 
+    public void createNewBookByAdmin(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the title of the new book you would like to make:");
+        String titleByAdmin = scanner.nextLine();
+        System.out.println("Mhm, mhm. And who wrote it?");
+        String authorByAdmin = scanner.nextLine();
+        System.out.println("Ah, I see. And what is it about?");
+        String shortDescriptionByAdmin = scanner.nextLine();
+        System.out.println("Wow, this book sounds amazing!\n" +
+        "The new book has been added to the library, if you want to double check" +
+                ", just choose option [1] at the menu.");
+        listOfAllBooks.add(new Book(titleByAdmin,authorByAdmin,shortDescriptionByAdmin,true));
+        saveBooks();
+        System.out.println("Returning to previous menu...");
+    }
+
+    public void removeBookByAdmin(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter the title of a book you wish to remove from the library.\n" +
+                "Keep in mind that the book will be gone forever.");
+        String inputByAdmin = scanner.nextLine();
+        for (Book book : listOfAllBooks){
+            if (book.getTitle().toLowerCase().equals(inputByAdmin.toLowerCase())){
+                listOfAllBooks.remove(book);
+                saveBooks();
+                System.out.println("Successfully removed book: " + book.getTitle() + " from the system.\n" +
+                        "Returning to previous menu...");
+            }
+        }
+    }
+
 
     public void showAllBooksWithAllContent() {
         for (Book book : listOfAllBooks) {

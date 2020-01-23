@@ -34,20 +34,20 @@ public class UserManager {
     }
 
 
-    public User searchForUserByName (){
+    public void searchForUserByName (){
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
-        //loadUsers();
+        loadUsers();
         for (User user : listOfAllUsers){
             if (user.getUserName().equals(userInput)){
-                return user;
+                System.out.println("User found: " + user.getUserName() +
+                        "\nReturning to previous menu...");
             }
         }
-        return null;
     }
 
+
     public void removeCustomerFromList(){
-        //loadUsers();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Enter the name of the user you wish to remove from the program.\n" +
@@ -58,6 +58,7 @@ public class UserManager {
             if (user.getUserName().equals(input)){
                 listOfAllUsers.remove(user);
                 saveUsers();
+                System.out.println("Successfully removed user: " + user.getUserName() + "from program.");
                 break;
             }
         }

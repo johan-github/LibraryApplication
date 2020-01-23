@@ -33,8 +33,10 @@ private User userClass;
             System.out.println("[4] See all books I posses." +
                     " (Chose this if you also might want to return a book)");
             System.out.println("[5] ONLY FOR ADMIN --- See all users and number of borrowed books individually");
-            System.out.println("[6] ONLY FOR ADMIN --- Search for a specific user.");
-            System.out.println("[7] ONLY FOR ADMIN --- Remove a specific user.");
+            System.out.println("[6] ONLY FOR ADMIN --- Search for a specific user");
+            System.out.println("[7] ONLY FOR ADMIN --- Remove a specific user");
+            System.out.println("[8] ONLY FOR ADMIN --- Add new book to the library");
+            System.out.println("[9] ONLY FOR ADMIN --- Remove book from the library");
             System.out.println("[0] Save, log out and return to Main menu");
 
             Scanner input = new Scanner(System.in);
@@ -57,7 +59,7 @@ private User userClass;
                     bookManager.searchTitleOrAuthor(c2);
                     break;
 
-                case "3":
+                case "3": // See all available books
                     bookManager.showAvailableBooks();
                     System.out.println("\nIf you wish to borrow a book, please enter the number " +
                             "next to the title. That book will be added to your personal cart.\n" +
@@ -66,13 +68,11 @@ private User userClass;
                     bookManager.borrowBookByIndex();
                     break;
 
-                case "4":
-                    // Show books user have, also gives opportunity to return one book.
+                case "4": // Show books user have, also gives opportunity to return one book.
                     bookManager.showUserBorrowedBooks();
                     break;
 
-                case "5":
-                    // See all users, ADMIN only
+                case "5": // See all users, ADMIN only
                     if (UserManager.activeUser.getUserRestriction().equals("customer")) {
                         System.out.println("Sorry, you don't have authority to use this, \n" +
                                 "please make another choice.\n Returning to menu...");
@@ -84,8 +84,7 @@ private User userClass;
                     }
                     break;
 
-                case "6":
-                    // Search for- and option to Remove user, ADMIN only
+                case "6": // Search for- and option to Remove user, ADMIN only
                     if (UserManager.activeUser.getUserRestriction().equals("customer")) {
                         System.out.println("Sorry, you don't have authority to use this, \n" +
                                 "please make another choice.\n Returning to menu...");
@@ -97,7 +96,7 @@ private User userClass;
                     }
                     break;
 
-                case "7":
+                case "7": // Remove customer by admin
                     if (UserManager.activeUser.getUserRestriction().equals("customer")) {
                         System.out.println("Sorry, you don't have authority to use this, \n" +
                                 "please make another choice.\n Returning to menu...");
@@ -105,6 +104,28 @@ private User userClass;
                     else {
                         System.out.println("Checking user authority... \nAdmin confirmed.");
                         userManager.removeCustomerFromList();
+                    }
+                    break;
+
+                case "8": //Create new book by admin
+                    if (UserManager.activeUser.getUserRestriction().equals("customer")) {
+                        System.out.println("Sorry, you don't have authority to use this, \n" +
+                                "please make another choice.\n Returning to menu...");
+                    }
+                    else {
+                        System.out.println("Checking user authority... \nAdmin confirmed.");
+                        bookManager.createNewBookByAdmin();
+                    }
+                    break;
+
+                case "9": // Remove book by admin
+                    if (UserManager.activeUser.getUserRestriction().equals("customer")) {
+                        System.out.println("Sorry, you don't have authority to use this, \n" +
+                                "please make another choice.\n Returning to menu...");
+                    }
+                    else {
+                        System.out.println("Checking user authority... \nAdmin confirmed.");
+                        bookManager.removeBookByAdmin();
                     }
                     break;
 
