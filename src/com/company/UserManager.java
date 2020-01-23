@@ -2,6 +2,7 @@ package com.company;
 
 import java.nio.file.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class UserManager {
 
@@ -33,21 +34,33 @@ public class UserManager {
     }
 
 
-    public void removeCustomerFromList(String inputFromUser){
+    public User searchForUserByName (){
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.next();
+        //loadUsers();
         for (User user : listOfAllUsers){
-            if (user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
-                listOfAllUsers.remove(user);
-                System.out.println("Successfully removed user: " + user.getUserName() + " from the system." +
-                        "\n" + "Returning to menu...");
-                break;
+            if (user.getUserName().equals(userInput)){
+                return user;
             }
-            if (!user.getUserName().toLowerCase().equals(inputFromUser.toLowerCase())){
-                System.out.println("Did not find user with that name, please enter a " +
-                        "valid username.\n" + "Returning to menu...");
+        }
+        return null;
+    }
+
+    public void removeCustomerFromList(){
+        //loadUsers();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the name of the user you wish to remove from the program.\n" +
+                "Please keep in mind that if you remove a user, all of it's content will be" +
+                " deleted as well and there are no chance of undo this.");
+        String input = scanner.next();
+        for (User user : listOfAllUsers){
+            if (user.getUserName().equals(input)){
+                listOfAllUsers.remove(user);
+                saveUsers();
                 break;
             }
         }
-
     }
 
 
