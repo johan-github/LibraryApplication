@@ -25,12 +25,14 @@ private User userClass;
 
             System.out.println("----------------------------------------------------------");
             System.out.println("Please select number below, proceed with <ENTER>\n");
-            System.out.println("[1] See ALL books (titles) that the Readers Inn have" +
-                    " (here you can also see individual description of all books");
+            System.out.println("[1] See ALL books (titles) that the Readers Inn have." +
+                    " (Here you can also see individual description of the books)");
             System.out.println("[2] Search by title or author");
-            System.out.println("[3] See all books that are available to borrow (chose this if you also want to loan a book)");
-            System.out.println("[4] See all books I posses (chose this if you also want to return a book)");
-            System.out.println("[5] ONLY FOR ADMIN --- See all users");
+            System.out.println("[3] See all books that are available to borrow." +
+                    " (Chose this option if you also might want to loan a book)");
+            System.out.println("[4] See all books I posses." +
+                    " (Chose this if you also might want to return a book)");
+            System.out.println("[5] ONLY FOR ADMIN --- See all users and number of borrowed books individually");
             System.out.println("[6] ONLY FOR ADMIN --- Remove user from application");
             System.out.println("[0] Save, log out and return to Main menu");
 
@@ -56,11 +58,16 @@ private User userClass;
 
                 case "3":
                     bookManager.showAvailableBooks();
-                    // Here the user can chose if she/he want to loan a book.
+                    System.out.println("\nIf you wish to borrow a book, please enter the number " +
+                            "next to the title. That book will be added to your personal cart.\n" +
+                            "If you wish to NOT borrow a book, return to previous menu by typing " +
+                            "[0] + <ENTER>.");
+                    bookManager.borrowBookByIndex();
                     break;
 
                 case "4":
                     // Show books user have, also gives opportunity to return one book.
+                    bookManager.showUserBorrowedBooks();
                     break;
 
                 case "5":
@@ -93,6 +100,7 @@ private User userClass;
                     // Save, log out and return to Main menu
                     System.out.println("Logging off, please wait...");
                     bookManager.saveBooks();
+                    //userManager.saveUsers();
                     subMenuRunning = false;
                     break;
                 default:
