@@ -27,7 +27,8 @@ public class UserManager {
     public void showAllUsers(){
         loadUsers();
         for (User user : listOfAllUsers){
-            System.out.println(user.getUserName());
+            System.out.println("User alias: " + user.getUserName()
+            + ". Number of books in possession: " + (user.getBorrowedBooks().size()));
         }
     }
 

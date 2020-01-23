@@ -61,19 +61,77 @@ public class BookManager {
     public void showNotAvailableBooks(){
         for (Book book : listOfAllBooks){
             if (!book.isAvailable()){
-                System.out.println();
-            }
-        }
-    }
-
-
-    public void showAvailableBooks() {
-        for (Book book : listOfAllBooks) {
-            if (book.isAvailable()) {
                 System.out.println(book.getTitle());
             }
         }
     }
+
+    public void showAvailableBooks(){
+        System.out.println("All books available to loan:");
+        int i = 1;
+        for (Book book : listOfAllBooks){
+            if (book.isAvailable()){
+                System.out.println(i + ": " + book.getTitle());
+                i++;
+            }
+        }
+    }
+
+
+    public void borrowBookByIndex(){
+        Scanner scanner = new Scanner(System.in);
+        String inputByUser = scanner.next();
+
+        while (true) {
+
+            if (inputByUser.equals("0")){
+                System.out.println("Returning to previous menu...");
+                break;
+            }
+
+            while (!inputByUser.matches("[0-9]+")) {    // || userInput.matches("[a-zA-Z]+")
+                System.out.println("Please enter a digit.");
+
+                System.out.println("Choose a number between: " +
+                        (listOfAllBooks.size() - listOfAllBooks.size() + 1) +
+                        " and " + listOfAllBooks.size());
+                try{
+                    inputByUser = scanner.next();
+                }catch (Exception e){
+                    System.out.println("Error... user wrote: " + inputByUser);
+                }
+            }
+            try{
+            while ((Integer.parseInt(inputByUser) - 1) >= 0 ||
+                    (Integer.parseInt(inputByUser) - 1) <= listOfAllBooks.size() &&
+                    Integer.parseInt(inputByUser) <= listOfAllBooks.size()) {
+
+                UserManager.activeUser.getBorrowedBooks().add(listOfAllBooks.get(Integer.parseInt(inputByUser) - 1));
+                listOfAllBooks.get(Integer.parseInt(inputByUser) - 1).setAvailable(false);
+                System.out.println("Adding: " + (listOfAllBooks.get(Integer.parseInt(inputByUser) - 1).getTitle()) +
+                " to your list of borrowed books.\nReturning to menu...");
+                return;
+            }
+            }catch (Exception e){
+                System.out.println("Number not valid, please try again.");
+            }
+            System.out.println("Choose a number between: " +
+                    (listOfAllBooks.size() - listOfAllBooks.size() + 1) +
+                    " and " + listOfAllBooks.size());
+            inputByUser = scanner.next();
+        }
+    }
+
+
+    public void showUserBorrowedBooks(){
+        System.out.println("You currently loan following books:\n"
+        + UserManager.activeUser.getBorrowedBooks().size());
+        for (Book borrowedBook : UserManager.activeUser.getBorrowedBooks()){
+            System.out.println(borrowedBook.getTitle());
+        }
+
+    }
+
 
     // Show author of a certain book, searched by title
     public void showAuthorCertainBook(String bookTitle) {
@@ -129,7 +187,13 @@ public class BookManager {
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.nextLine();
 
+
         while (true) {
+
+            if (userInput.equals("0")){
+                System.out.println("Returning to previous menu...");
+                break;
+            }
 
             while (!userInput.matches("[0-9]+") || userInput.matches("[a-zA-Z]+")) {
                 System.out.println("Please enter a digit.");

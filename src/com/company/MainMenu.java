@@ -19,7 +19,7 @@ public class MainMenu {
     }
 
     private void checkIfUserExist(){
-        userManager.loadUsers();
+        //userManager.loadUsers();
         String userInput = inputFromUser.next();
         User user = userManager.findUser(userInput);
         if (user != null){

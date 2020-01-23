@@ -30,8 +30,8 @@ public class Book implements Serializable {
     public boolean isAvailable() {
         return available;
     }
-    public boolean NotAvailable(){
-        return available = false;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     // toString
