@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class SubMenu {
@@ -69,6 +70,8 @@ private User userClass;
                                 "please make another choice.\n Returning to menu...");
                     }
                     else {
+                        System.out.println("Checking user authority... \nAdmin confirmed." +
+                                "\nPrinting list of all users...");
                         userManager.showAllUsers();
                     }
                     break;

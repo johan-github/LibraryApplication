@@ -86,9 +86,4 @@ public class UserManager {
         }
     }
 
-   /* public ArrayList<User> getListOfAllUsers() {
-        return listOfAllUsers;
-    }
-
-    */
 }
