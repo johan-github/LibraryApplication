@@ -9,6 +9,7 @@ public class User implements Serializable {
     private String userRestriction;
     private ArrayList<Book> borrowedBooks;
 
+
     public User(String userName, String userRestriction) {
         this.userName = userName;
         this.userRestriction = userRestriction;
@@ -26,20 +27,6 @@ public class User implements Serializable {
      * Also SHOWS borrowed books.
      */
     public ArrayList<Book> getBorrowedBooks() {
-        return borrowedBooks;
+        return UserManager.activeUser.borrowedBooks; // was return borrowedBooks
     }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public void addBookToUser(Book book){
-        borrowedBooks.add(book);
-    }
-
-
-    public void removeBookFromUser(Book book){
-        borrowedBooks.remove(book);
-    }
-
 }

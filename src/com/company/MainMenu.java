@@ -45,11 +45,15 @@ public class MainMenu {
             System.out.println("[2] Register as new user");
             System.out.println("[0] Save and Quit");
 
-
             Scanner input = new Scanner(System.in);
             String userInput = input.next();
 
+            if (!userInput.matches("[0-3]+")){
+                System.out.println("Please enter a digit between 1-3. Select with <ENTER>");
+            }
+
             switch (userInput) {
+
                 case "1":
                     System.out.println("Please enter your username");
                     checkIfUserExist();
@@ -66,6 +70,7 @@ public class MainMenu {
 
                 case "0":
                     System.out.println("Shutting down program, please come back soon! :-)");
+                    userManager.saveUsers();
                     System.exit(0);
                 default:
             }
