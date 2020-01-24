@@ -16,6 +16,7 @@ public class UserManager {
 
     public void createNewAdmin(){
         listOfAllUsers.add(new User("admin", "admin"));
+        saveUsers();
     }
 
 
@@ -25,11 +26,11 @@ public class UserManager {
         System.out.println("Sucessfully added: " + newUserName + " to the program");
     }
 
-    public void showAllUsers(){
+    public void showAllUsersAndNumberOfBooks(){
         loadUsers();
         for (User user : listOfAllUsers){
-            System.out.println("User alias: " + user.getUserName()
-            + ". Number of books in possession: " + (user.getBorrowedBooks().size()));
+            System.out.println("User: " + user.getUserName()
+            + "\n. Number of books in possession: " + (user.getBorrowedBooks().toString()) + "\n");
         }
     }
 
@@ -37,11 +38,12 @@ public class UserManager {
     public void searchForUserByName (){
         Scanner scanner = new Scanner(System.in);
         String userInput = scanner.next();
-        loadUsers();
+        //loadUsers();
         for (User user : listOfAllUsers){
             if (user.getUserName().equals(userInput)){
                 System.out.println("User found: " + user.getUserName() +
-                        "\nReturning to previous menu...");
+                        ". Books user possess: " + user.getBorrowedBooks());
+                System.out.println("\nReturning to previous menu...");
             }
         }
     }
@@ -49,7 +51,6 @@ public class UserManager {
 
     public void removeCustomerFromList(){
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("Enter the name of the user you wish to remove from the program.\n" +
                 "Please keep in mind that if you remove a user, all of it's content will be" +
                 " deleted as well and there are no chance of undo this.");
@@ -59,6 +60,7 @@ public class UserManager {
                 listOfAllUsers.remove(user);
                 saveUsers();
                 System.out.println("Successfully removed user: " + user.getUserName() + "from program.");
+                System.out.println("Returning to previous menu...");
                 break;
             }
         }
