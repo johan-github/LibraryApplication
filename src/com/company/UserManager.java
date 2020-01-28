@@ -85,6 +85,10 @@ public class UserManager {
         activeUser = user;
     }
 
+    public void setNotActiveUser(){
+        activeUser = null;
+    }
+
 
     public void saveUsers(){
         FileUtils.saveObject("users.ser", listOfAllUsers, StandardOpenOption.CREATE);

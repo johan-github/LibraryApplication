@@ -31,11 +31,13 @@ private UserManager userManager;
                     " (Chose this option if you also might want to loan a book)");
             System.out.println("[4] See all books I posses." +
                     " (Chose this if you also might want to return a book)");
-            System.out.println("[5] ONLY FOR ADMIN --- See all users and number of borrowed books individually");
-            System.out.println("[6] ONLY FOR ADMIN --- Search for a specific user");
-            System.out.println("[7] ONLY FOR ADMIN --- Remove a specific user");
-            System.out.println("[8] ONLY FOR ADMIN --- Add new book to the library");
-            System.out.println("[9] ONLY FOR ADMIN --- Remove book from the library");
+            if (!UserManager.activeUser.getUserRestriction().equals("customer")) {
+                System.out.println("[5] ONLY FOR ADMIN --- See all users and number of borrowed books individually");
+                System.out.println("[6] ONLY FOR ADMIN --- Search for a specific user");
+                System.out.println("[7] ONLY FOR ADMIN --- Remove a specific user");
+                System.out.println("[8] ONLY FOR ADMIN --- Add new book to the library");
+                System.out.println("[9] ONLY FOR ADMIN --- Remove book from the library");
+            }
             System.out.println("[0] Save, log out and return to Main menu");
 
             Scanner input = new Scanner(System.in);
@@ -133,9 +135,10 @@ private UserManager userManager;
 
                 case "0":
                     // Save, log out and return to Main menu
-                    System.out.println("Logging off, please wait...");
+                    System.out.println("Saving progress and logging off, please wait...");
                     bookManager.saveBooks();
                     userManager.saveUsers();
+                    userManager.setNotActiveUser();
                     subMenuRunning = false;
                     break;
                 default:
