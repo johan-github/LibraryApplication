@@ -188,7 +188,7 @@ public class BookManager {
                 break;
             }
 
-            while (!inputByUser.matches("[0-9]+")) { 
+            while (!inputByUser.matches("[0-9]+")) {
                 System.out.println("Please enter a digit.");
 
                 System.out.println("Choose a number between: " +
