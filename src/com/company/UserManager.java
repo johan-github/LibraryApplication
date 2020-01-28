@@ -30,7 +30,7 @@ public class UserManager {
         loadUsers();
         for (User user : listOfAllUsers){
             System.out.println("User: " + user.getUserName()
-            + "\n. Number of books in possession: " + (user.getBorrowedBooks().toString()) + "\n");
+            + ".\nNumber of books in possession: " + (user.getBorrowedBooks().toString()) + "\n");
         }
     }
 

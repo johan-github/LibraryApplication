@@ -91,7 +91,7 @@ private UserManager userManager;
                 case "6": // Search for- and option to Remove user, ADMIN only
                     if (UserManager.activeUser.getUserRestriction().equals("customer")) {
                         System.out.println("Sorry, you don't have authority to use this, \n" +
-                                "please make another choice.\n Returning to previous menu...");
+                                "please make another choice.\nReturning to previous menu...");
                     }
                     else {
                         System.out.println("Checking user authority... \nAdmin confirmed." +
@@ -103,7 +103,7 @@ private UserManager userManager;
                 case "7": // Remove customer by admin
                     if (UserManager.activeUser.getUserRestriction().equals("customer")) {
                         System.out.println("Sorry, you don't have authority to use this, \n" +
-                                "please make another choice.\n Returning to previous menu...");
+                                "please make another choice.\nReturning to previous menu...");
                     }
                     else {
                         System.out.println("Checking user authority... \nAdmin confirmed.");
@@ -133,8 +133,7 @@ private UserManager userManager;
                     }
                     break;
 
-                case "0":
-                    // Save, log out and return to Main menu
+                case "0": // Save, log out and return to Main menu
                     System.out.println("Saving progress and logging off, please wait...");
                     bookManager.saveBooks();
                     userManager.saveUsers();
